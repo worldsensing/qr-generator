@@ -1,0 +1,10 @@
+.textInput {
+  border: 1px solid grey;
+  padding: 5px 15px;
+  border-radius: 15px;
+  outline: none;
+}
+
+.textInput:focus{
+  border: 1px solid lightseagreen;
+}

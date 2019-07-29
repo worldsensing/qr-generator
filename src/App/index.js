@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
 import QR from './components/qr'
-import ContentEditable from './components/contentEditable'
-// import InputText from './components/inputText'
+import TextInput from './components/textInput'
+import Button from './components/button'
 import './App.css'
 
 class App extends React.Component {
@@ -11,11 +11,19 @@ class App extends React.Component {
     this.state = {
       text: ''
     }
+    this.text = ''
+
     this.handleText = this.handleText.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleText = text => {
-    this.setState({ text })
+    this.text = text
+    // this.setState({ text })
+  }
+
+  handleClick = text => {
+    this.setState({ text: this.text })
   }
 
   render() {
@@ -23,9 +31,8 @@ class App extends React.Component {
     return (
       <>
         <Container fixed>
-          <ContentEditable value={this.state.text} onChange={this.handleText} placeholder="Write something" />
-
-
+          <TextInput value={this.state.text} onChange={this.handleText} placeholder="Write something" />
+          <Button text="Convert" onClick={this.handleClick} />
           <QR value={this.state.text}></QR>
 
         </Container>
