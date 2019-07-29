@@ -1,0 +1,7 @@
+.qr-cell{}
+.qr-cell-empty{
+    fill: #fff;
+  }
+  .qr-cell-filled{
+    fill: #000;
+  }
