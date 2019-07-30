@@ -1,7 +1,18 @@
-.qr-cell{}
+.qr {
+  grid-area: qr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qr__element{
+  width: 100%;
+}
+.qr-cell{
+  width: 100%;
+}
 .qr-cell-empty{
-    fill: #fff;
-  }
-  .qr-cell-filled{
-    fill: #000;
-  }
+  fill: #fff;
+}
+.qr-cell-filled{
+  fill: #000;
+}
