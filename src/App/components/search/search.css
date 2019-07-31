@@ -1,9 +1,6 @@
 .search {
-  margin-top: 5px;
-  padding: 5px 10px;
-  display: flex;
-  width: 100%;
-  max-width: 200px;
+  padding: 10px;
+  background-color: #333;
 }
 
 .search .input--checkbox {

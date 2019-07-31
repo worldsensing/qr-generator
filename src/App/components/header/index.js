@@ -13,10 +13,8 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <Container fixed>
-          <div className="header__logo">QR Converter</div>
-          <div className="header__gear">A</div>
-        </Container>
+        <div className="header__gear">QR Converter</div>
+        <div className="header__logo"></div>
       </div>
     )
   }
