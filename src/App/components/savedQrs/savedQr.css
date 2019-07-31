@@ -1,0 +1,60 @@
+.savedQr {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  transition: all ease-out 250ms;
+  padding: 10px;
+  animation-duration: 250ms;
+  animation-name: justSaved;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.savedQr:hover {
+  background-color: #333;
+}
+
+.savedQr:hover .savedQr__name {
+  color: var(--selected-color);
+}
+
+.savedQr > * + * {
+  margin-left: 10px;
+}
+
+.savedQr__qr {
+  flex-shrink: 0;
+}
+
+.savedQr__qr .qr__element {
+  height: 60px;
+  width: 60px;
+}
+
+.savedQr__data {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.savedQr__name {
+  transition: all ease-out 250ms;
+}
+
+.savedQr__date {
+  color: var(--font-color-secundary);
+}
+
+.savedQrs--oneLeft{
+  transition-delay: 150ms;
+}
+
+@keyframes justSaved {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

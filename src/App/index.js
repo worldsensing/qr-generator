@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-    const qrs = Store.get(QRS)
+    const qrs = Store.get(QRS) || []
 
     this.state = {
       text: '',
@@ -25,6 +25,8 @@ class App extends React.Component {
     this.handleText = this.handleText.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
+    this.handleLoadQR = this.handleLoadQR.bind(this)
+    this.handleRemoveQR = this.handleRemoveQR.bind(this)
   }
 
   handleText = text => {
@@ -32,12 +34,14 @@ class App extends React.Component {
   }
 
   handleSubmit = name => {
-    const date = Date.now(),
+    const date = new Date().toISOString(),
+      timestamp = Date.parse(date),
       { text, qrs: storedQrs } = this.state,
       qr = {
-        id: `${date}--${name}`,
+        id: `${timestamp}--${name}`,
         name,
         date,
+        timestamp,
         text
       },
       qrs = [...(storedQrs ? storedQrs : ''), qr]
@@ -49,6 +53,17 @@ class App extends React.Component {
     this.setState({ search: text, qrs: this.qrs.filter(qr => qr.name.includes(text)) })
   }
 
+  handleLoadQR = qr => {
+    const { text } = qr
+    this.setState({ text })
+  }
+
+  handleRemoveQR = removedQr => {
+    const qrs = this.state.qrs.filter(qr => removedQr.id !== qr.id)
+
+    this.setState({ qrs }, qrs.length ? Store.set(QRS, qrs) : Store.remove(QRS))
+  }
+
   render() {
 
     return (
@@ -57,15 +72,30 @@ class App extends React.Component {
           <Header />
         </header>
         <div className="app__body">
-          <aside className="app__aside">
-            <Search onSearch={this.handleSearch} value={this.state.search} />
-            <SavedQrs qrs={this.state.qrs} />
+          <aside className={['app__aside', this.state.qrs.length ? 'app__aside--hasQrs' : 'app__aside--empty'].join(' ')}>
+            {this.state.qrs.length ?
+              <>
+                <Search onSearch={this.handleSearch} value={this.state.search} />
+                <div className="scrollableY">
+                  <SavedQrs qrs={this.state.qrs} onSelect={this.handleLoadQR} onRemove={this.handleRemoveQR} />
+                </div>
+              </>
+              : null
+            }
           </aside>
           <main className="app__main">
-            <TextInput value={this.state.text} onChange={this.handleText} placeholder="Write something" />
-            <TextOutput value={this.state.text} placeholder="..." />
-            <QR value={this.state.text}></QR>
-            <Save onSubmit={this.handleSubmit} />
+            <div className="app__textInput">
+              <TextInput value={this.state.text} onChange={this.handleText} placeholder="Write something" />
+            </div>
+            <div className="app__textOutput">
+              <TextOutput value={this.state.text} placeholder="..." />
+            </div>
+            <div className="app__qr">
+              <QR value={this.state.text}></QR>
+            </div>
+            <div className="app__save">
+              <Save onSubmit={this.handleSubmit} />
+            </div>
           </main>
         </div>
       </div>

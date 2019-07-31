@@ -1,9 +1,15 @@
 :root{
   --font-size: 14px;
   --line-height: 16px;
-  --background-color: #000;
-  --color: #fff;
-  --padding-box: 10px 25px;
+  --background-header-color: #fff;
+  --background-main-color: #464646;
+  --background-aside-color: #252526;
+  --font-color-inverted: #000;
+  --font-color-general: #fff;
+  --font-color-secundary: #bbb;
+  --selected-color: #31dad1;
+  --borders-color: #000;
+  --header-height: 50px;
 }
 
 body {
@@ -23,7 +29,5 @@ code {
 * {
   font-size: var(--font-size);
   line-height: var(---line-height);
-  background-color: var(--background-color);
-  color: var(--color);
   box-sizing: border-box;
 }

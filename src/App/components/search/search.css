@@ -1,0 +1,11 @@
+.search {
+  margin-top: 5px;
+  padding: 5px 10px;
+  display: flex;
+  width: 100%;
+  max-width: 200px;
+}
+
+.search .input--checkbox {
+  flex-grow: 1;
+}

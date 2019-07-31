@@ -1,29 +1,103 @@
 .app {
   width: 100%;
   height: 100vh;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .app__header {
   flex-shrink: 0;
+  background-color: var(--background-header-color);
+  color: var(--selected-color);
+  height: var(--header-height);
 }
 
 .app__body {
   flex-grow: 1;
   display: flex;
+  flex-direction: row;
+  color: var(--font-color-general);
+  height: calc(100% - var(--header-height));
 }
 
 .app__aside {
+  display: flex;
+  flex-direction: column;
   flex-shrink: 0;
-  width: 100%;
-  flex-basis: 100px;
+  background-color: var(--background-aside-color);
+  transition: all ease-out 200ms;
+}
+
+.app__aside--hasQrs {
+  flex-basis: 300px;
+}
+.app__aside--empty {
+  flex-basis: 0;
+  transition-delay: 150ms;
 }
 
 .app__main {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-template-areas: "textInput textOutput" "qr save";
+  background-color: var(--borders-color);
+  grid-gap: 1px;
+}
+
+.app__textInput,
+.app__textOutput,
+.app__qr,
+.app__save {
+  display: flex;
+  background-color: var(--background-main-color);
+}
+
+.app__textInput,
+.app__textOutput {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.app__qr,
+.app__save {
+  align-items: center;
+  justify-content: center;
+}
+
+.app__textInput {
+  grid-area: textInput;
+}
+
+.app__textOutput {
+  grid-area: textOutput;
+}
+
+.app__qr {
+  grid-area: qr;
+}
+
+.app__save {
+  grid-area: save;
+}
+
+.scrollableY {
+  overflow-y: auto;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--selected-color);
 }

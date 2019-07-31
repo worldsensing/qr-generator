@@ -1,0 +1,27 @@
+.input--checkbox {
+  color: inherit;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--font-color-general);
+  caret-color: transparent;
+}
+
+.input--checkbox:focus {
+  transition: all ease-in-out 250ms;
+  color: var(--selected-color);
+  border-bottom: 1px solid var(--selected-color);
+  caret-color: var(--selected-color);
+}
+
+::-webkit-input-placeholder {
+  color: var(--font-color-secundary)
+}
+
+:-ms-input-placeholder {
+  color: var(--font-color-secundary)
+}
+
+::placeholder {
+  color: var(--font-color-secundary)
+}
