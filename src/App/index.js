@@ -8,6 +8,7 @@ import Header from './components/header'
 import Search from './components/search'
 import './App.css'
 import Store, { QRS } from 'App/store'
+import GridHeader from './components/gridHeader'
 
 class App extends React.Component {
   constructor(props) {
@@ -85,15 +86,19 @@ class App extends React.Component {
           </aside>
           <main className="app__main">
             <div className="app__textInput">
+              <GridHeader text="Input data" />
               <TextInput value={this.state.text} onChange={this.handleText} placeholder="Write something" />
             </div>
             <div className="app__textOutput">
+              <GridHeader text="Formatted data" />
               <TextOutput value={this.state.text} placeholder="..." />
             </div>
             <div className="app__qr">
+              <GridHeader text="Result QR" />
               <QR value={this.state.text}></QR>
             </div>
             <div className="app__save">
+              <GridHeader text="Options" />
               <Save onSubmit={this.handleSubmit} />
             </div>
           </main>
