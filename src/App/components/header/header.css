@@ -4,12 +4,45 @@
   flex-direction: row;
   height: 100%;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
+.header__logotype {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .header__logo,
-.header__gear {
-  float: left;
+.header__qrInverted {
+  height: 100%;
+}
+
+.header__type {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}
+
+.header__type-qr {
+  font-weight: bold;
+}
+
+.header__type-converter {
+  font-weight: lighter;
+  letter-spacing: -0.65px;
+}
+
+.header__type-qr + .header__type-converter{
+  margin-left: 6px;
+}
+
+.header__logo + .header__type {
+  margin-left: 10px;
+}
+
+.header__colorChange {
+  height: 100%;
+  cursor: pointer;
 }

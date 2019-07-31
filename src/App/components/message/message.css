@@ -3,8 +3,8 @@
   padding: 5px 10px;
 }
 .message--valid {
-  color: var(--font-color-success);
+  color: var(--font_color_success);
 }
 .message--error {
-  color: var(--font-color-error);
+  color: var(--font_color_error);
 }

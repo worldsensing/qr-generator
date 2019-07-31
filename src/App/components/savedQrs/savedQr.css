@@ -12,11 +12,11 @@
 }
 
 .savedQr:hover {
-  background-color: var(--background-aside-secundary);
+  background-color: var(--background_aside_secundary);
 }
 
 .savedQr:hover .savedQr__name {
-  color: var(--selected-color);
+  color: var(--selected_color);
 }
 
 .savedQr > * + * {
@@ -43,7 +43,7 @@
 }
 
 .savedQr__date {
-  color: var(--font-color-secundary);
+  color: var(--font_color_secundary);
 }
 
 .savedQrs--oneLeft{

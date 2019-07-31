@@ -1,3 +1,18 @@
+:root{
+  --header_height: 40px;
+  --background_header_color: #fff;
+  --background_main_color: #272822;
+  --background_aside_color: #171717;
+  --background_aside_secundary: #3c3c3c;
+  --font_color_inverted: #000;
+  --font_color_general: #fff;
+  --font_color_secundary: #bbb;
+  --selected_color: #31dad1;
+  --font_color_success: #7cdd5e;
+  --font_color_error: #e64f4f;
+  --borders_color: #000;
+}
+
 .app {
   width: 100%;
   height: 100vh;
@@ -8,24 +23,25 @@
 
 .app__header {
   flex-shrink: 0;
-  background-color: var(--background-header-color);
-  color: var(--selected-color);
-  height: var(--header-height);
+  background-color: var(--background_header_color);
+  color: var(--selected_color);
+  fill: var(--selected_color);
+  height: var(--header_height);
 }
 
 .app__body {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
-  color: var(--font-color-general);
-  height: calc(100% - var(--header-height));
+  color: var(--font_color_general);
+  height: calc(100% - var(--header_height));
 }
 
 .app__aside {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  background-color: var(--background-aside-color);
+  background-color: var(--background_aside_color);
   transition: all ease-out 200ms;
 }
 
@@ -43,7 +59,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas: "textInput textOutput" "qr save";
-  background-color: var(--borders-color);
+  background-color: var(--borders_color);
   grid-gap: 1px;
 }
 
@@ -52,7 +68,7 @@
 .app__qr,
 .app__save {
   display: flex;
-  background-color: var(--background-main-color);
+  background-color: var(--background_main_color);
 }
 
 .app__textInput,
@@ -100,5 +116,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: var(--selected-color);
+	background-color: var(--selected_color);
 }

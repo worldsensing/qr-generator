@@ -8,6 +8,8 @@ import Header from './components/header'
 import Search from './components/search'
 import './App.css'
 import Store, { QRS } from 'App/store'
+import Theme from 'App/theme'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +19,8 @@ class App extends React.Component {
 
     this.state = {
       text: '',
-      qrs
+      qrs,
+      theme: 'dark'
     }
 
     this.qrs = qrs
@@ -27,6 +30,7 @@ class App extends React.Component {
     this.handleSearch = this.handleSearch.bind(this)
     this.handleLoadQR = this.handleLoadQR.bind(this)
     this.handleRemoveQR = this.handleRemoveQR.bind(this)
+    this.handleColorChange = this.handleColorChange.bind(this)
   }
 
   handleText = text => {
@@ -64,12 +68,19 @@ class App extends React.Component {
     this.setState({ qrs }, qrs.length ? Store.set(QRS, qrs) : Store.remove(QRS))
   }
 
+  handleColorChange = color => {
+    const lightness = color ? 'dark' : 'light',
+      theme = Theme[lightness]
+
+    Object.entries(theme).forEach(([key, color]) => document.documentElement.style.setProperty(`--${key}`, color))
+  }
+
   render() {
 
     return (
       <div className="app">
         <header className="app__header">
-          <Header />
+          <Header onColorChange={this.handleColorChange} />
         </header>
         <div className="app__body">
           <aside className={['app__aside', this.state.qrs.length ? 'app__aside--hasQrs' : 'app__aside--empty'].join(' ')}>
