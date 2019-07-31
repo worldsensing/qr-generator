@@ -6,8 +6,6 @@ class TextInput extends React.Component {
   constructor(props) {
     super(props)
 
-    this.textInputRef = React.createRef();
-
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -22,15 +20,14 @@ class TextInput extends React.Component {
   render() {
 
     return (
-      <ContentEditable
+      <textarea
         tabIndex={0}
         className="textInput"
-        innerRef={this.textInputRef}
-        html={this.props.value}
-        disabled={false}
         onChange={this.handleChange}
         tagName='code'
-      />
+      >
+        {this.props.value}
+      </textarea>
     )
   }
 }
