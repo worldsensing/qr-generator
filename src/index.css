@@ -2,12 +2,15 @@
   --font-size: 14px;
   --line-height: 16px;
   --background-header-color: #fff;
-  --background-main-color: #464646;
-  --background-aside-color: #252526;
+  --background-main-color: #272822;
+  --background-aside-color: #171717;
+  --background-aside-secundary: #3c3c3c;
   --font-color-inverted: #000;
   --font-color-general: #fff;
   --font-color-secundary: #bbb;
   --selected-color: #31dad1;
+  --font-color-success: #7cdd5e;
+  --font-color-error: #e64f4f;
   --borders-color: #000;
   --header-height: 50px;
 }

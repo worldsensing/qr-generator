@@ -1,0 +1,10 @@
+.message {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+.message--valid {
+  color: var(--font-color-success);
+}
+.message--error {
+  color: var(--font-color-error);
+}

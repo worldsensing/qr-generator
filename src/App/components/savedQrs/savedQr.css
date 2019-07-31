@@ -12,7 +12,7 @@
 }
 
 .savedQr:hover {
-  background-color: #333;
+  background-color: var(--background-aside-secundary);
 }
 
 .savedQr:hover .savedQr__name {
@@ -24,12 +24,12 @@
 }
 
 .savedQr__qr {
+  flex-basis: 45px;
   flex-shrink: 0;
 }
 
 .savedQr__qr .qr__element {
-  height: 60px;
-  width: 60px;
+  padding: 6px;
 }
 
 .savedQr__data {

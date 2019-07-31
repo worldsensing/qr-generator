@@ -67,16 +67,17 @@
   justify-content: center;
 }
 
+.app__qr {
+  padding: 25px;
+  grid-area: qr;
+}
+
 .app__textInput {
   grid-area: textInput;
 }
 
 .app__textOutput {
   grid-area: textOutput;
-}
-
-.app__qr {
-  grid-area: qr;
 }
 
 .app__save {

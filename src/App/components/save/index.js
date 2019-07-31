@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../button'
 import InputText from '../inputText'
+import Message from '../message'
 import './save.css'
 
 class Save extends React.Component {
@@ -8,7 +9,8 @@ class Save extends React.Component {
     super(props)
 
     this.state = {
-      text: ''
+      text: '',
+      valid: undefined
     }
 
     this.handleInput = this.handleInput.bind(this)
@@ -20,8 +22,13 @@ class Save extends React.Component {
   }
 
   handleClick() {
-    this.props.onSubmit(this.state.text)
-    this.setState({ text: '' })
+    if (!this.state.text) {
+      this.setState({ valid: false })
+    }
+    else {
+      this.props.onSubmit(this.state.text)
+      this.setState({ valid: true, text: '' })
+    }
   }
 
   render() {
@@ -29,6 +36,7 @@ class Save extends React.Component {
       <div className="save">
         <InputText placeholder="Name your QR" value={this.state.text} onInput={this.handleInput} />
         <Button text="Save" onClick={this.handleClick}></Button>
+        <Message valid={this.state.valid} />
       </div>
     )
   }
