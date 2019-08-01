@@ -1,0 +1,54 @@
+
+.gridHeader {
+  --gridHeader__padding: 10px;
+  width: 100%;
+  color: var(--font_color_secundary);
+  background-color: var(--background_main_color_secundary);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 2px var(--gridHeader__padding);
+  position: relative;
+}
+
+.gridHeader__title {
+  font-weight: bold;
+}
+
+.gridHeader__toogler {
+  align-self: flex-end;
+  padding: 0 var(--gridHeader__padding);
+}
+
+.gridHeader__toogleOptions {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0px;
+}
+
+.gridHeader__toogleOptions:hover > .gridHeader__options {
+  display: flex;
+}
+
+.gridHeader__options {
+  display: none;
+  flex-direction: column;
+  background-color: var(--background_main_color_secundary);
+  padding: var(--gridHeader__padding);
+}
+
+.gridHeader__option {
+  transition: all ease-out 200ms;
+  cursor: pointer;
+}
+
+.gridHeader__option--selected,
+.gridHeader__option:hover {
+  color: var(--font_color_general);
+}
+
+.gridHeader__option--selected {
+  cursor: default;
+}

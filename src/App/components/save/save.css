@@ -4,4 +4,5 @@
   align-items: center;
   justify-content: center;
   grid-area: save;
+  flex-grow: 1;
 }

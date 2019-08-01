@@ -1,5 +1,6 @@
 export const QRS = 'QRS',
-  THEME = 'THEME'
+  THEME = 'THEME',
+  INPUT_OPTION = 'INPUT_OPTION'
 
 class Store {
   static set = (key, value) => window.localStorage.setItem(key, JSON.stringify(value))

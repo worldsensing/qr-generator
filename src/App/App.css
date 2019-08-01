@@ -2,6 +2,7 @@
   --header_height: 40px;
   --background_header_color: #fff;
   --background_main_color: #272822;
+  --background_main_color_secundary: #3e3e3e;
   --background_aside_color: #171717;
   --background_aside_secundary: #3c3c3c;
   --font_color_inverted: #000;
@@ -68,6 +69,7 @@
 .app__qr,
 .app__save {
   display: flex;
+  flex-direction: column;
   background-color: var(--background_main_color);
 }
 
@@ -77,15 +79,12 @@
   justify-content: flex-start;
 }
 
-.app__qr,
-.app__save {
-  align-items: center;
-  justify-content: center;
+.app__qr {
+  grid-area: qr;
 }
 
-.app__qr {
+.app__qrWrapper {
   padding: 25px;
-  grid-area: qr;
 }
 
 .app__textInput {

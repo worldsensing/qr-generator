@@ -1,11 +1,8 @@
 import React from 'react'
-import QR from './components/qr'
-import TextInput from './components/textInput'
-import TextOutput from './components/textOutput'
-import Save from './components/save'
 import SavedQrs from './components/savedQrs'
 import Header from './components/header'
 import Search from './components/search'
+import Grid from './components/grid'
 import './App.css'
 import Store, { QRS, THEME } from 'App/store'
 import Theme from 'App/theme'
@@ -18,38 +15,18 @@ class App extends React.Component {
     const qrs = Store.get(QRS) || []
 
     this.state = {
-      text: '',
-      qrs
+      qrs,
+      search: ''
     }
 
     this.qrs = qrs
 
-    this.handleText = this.handleText.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+
+    this.handleSavedQR = this.handleSavedQR.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleLoadQR = this.handleLoadQR.bind(this)
     this.handleRemoveQR = this.handleRemoveQR.bind(this)
     this.handleColorChange = this.handleColorChange.bind(this)
-  }
-
-  handleText = text => {
-    this.setState({ text })
-  }
-
-  handleSubmit = name => {
-    const date = new Date().toISOString(),
-      timestamp = Date.parse(date),
-      { text, qrs: storedQrs } = this.state,
-      qr = {
-        id: `${timestamp}--${name}`,
-        name,
-        date,
-        timestamp,
-        text
-      },
-      qrs = [...(storedQrs ? storedQrs : ''), qr]
-
-    this.setState({ qrs }, Store.set(QRS, qrs))
   }
 
   handleSearch = text => {
@@ -82,6 +59,10 @@ class App extends React.Component {
     Object.entries(theme).forEach(([key, color]) => document.documentElement.style.setProperty(`--${key}`, color))
   }
 
+  handleSavedQR = qr => {
+    this.setState(prevState => ({ qrs: [...(prevState.qrs ? prevState.qrs : ''), qr] }), Store.set(QRS, this.state.qrs))
+  }
+
   render() {
     this.setTheme()
 
@@ -102,20 +83,7 @@ class App extends React.Component {
               : null
             }
           </aside>
-          <main className="app__main">
-            <div className="app__textInput">
-              <TextInput value={this.state.text} onChange={this.handleText} placeholder="Write something" />
-            </div>
-            <div className="app__textOutput">
-              <TextOutput value={this.state.text} placeholder="..." />
-            </div>
-            <div className="app__qr">
-              <QR value={this.state.text}></QR>
-            </div>
-            <div className="app__save">
-              <Save onSubmit={this.handleSubmit} />
-            </div>
-          </main>
+          <Grid onSavedQR={this.handleSavedQR} />
         </div>
       </div>
     )

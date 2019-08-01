@@ -1,11 +1,14 @@
 import React from 'react'
+import Store, { THEME } from 'App/store'
 
 class QRInverted extends React.Component {
   constructor(props) {
     super(props)
 
+    const isNotDarkTheme = Store.get(THEME) !== 'dark'
+
     this.state = {
-      color: false
+      color: isNotDarkTheme
     }
 
     this.handleClick = this.handleClick.bind(this)
