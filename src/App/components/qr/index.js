@@ -5,6 +5,9 @@ import './qr.css'
 class QR extends React.Component {
 
   render() {
+    const json = JSON.stringify(this.props.value),
+      value = json.replace(/(\s|\\n|\\)/g, "")
+
     return (
       <div className="qr">
         <div className="qr__wrapper">
@@ -13,7 +16,7 @@ class QR extends React.Component {
               className="qr__element"
               level="Q"
               cellClassPrefix="qr"
-              value={JSON.stringify(this.props.value)}
+              value={value}
             />
           </div>
         </div>

@@ -9,6 +9,7 @@ class TextOutput extends React.Component {
   }
 
   render() {
+
     try {
       const data = this.props.value.trim(),
         json = JSON.parse(data)
