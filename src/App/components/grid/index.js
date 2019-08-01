@@ -42,13 +42,14 @@ class Grid extends React.Component {
   handleSubmit = name => {
     const date = new Date().toISOString(),
       timestamp = Date.parse(date),
-      { text } = this.state,
+      { text, form } = this.state,
       qr = {
         id: `${timestamp}--${name}`,
         name,
         date,
         timestamp,
-        text
+        text,
+        form
       }
 
     this.props.onSavedQR(qr)
@@ -90,6 +91,8 @@ class Grid extends React.Component {
     }
   }
 
+  outputValue = () => this.isInputOption('form') ? this.state.form || this.state.text : this.state.text
+
   render() {
 
     return (
@@ -99,11 +102,11 @@ class Grid extends React.Component {
           {this.isInputOption('form') && <FormInput value={this.state.text} onFormChange={this.handleFormInputChange} />}
         </GridCell>
         <GridCell className="app__textOutput" title="Output" >
-          <TextOutput value={this.isInputOption('form') ? this.state.form || this.state.text : this.state.text} placeholder="..." />
+          <TextOutput value={this.outputValue()} placeholder="..." />
         </GridCell>
         <GridCell className="app__qr" title="QR" >
           <div className="app__qrWrapper">
-            <QR value={this.isInputOption('form') ? this.state.form || this.state.text : this.state.text}></QR>
+            <QR value={this.outputValue()}></QR>
           </div>
         </GridCell>
         <GridCell className="app__save" title="Save" >

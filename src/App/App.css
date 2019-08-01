@@ -55,13 +55,18 @@
 }
 
 .app__main {
+  --font_size: 10px;
+  font-size: var(--font_size);
   flex-grow: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-areas: "textInput textOutput" "qr save";
   background-color: var(--borders_color);
+  display: grid;
   grid-gap: 1px;
+  grid-template-rows: repeat(2, calc(50% - 1px)); /* grid-gap */
+  grid-template-areas: "textInput textOutput" "qr save";
+}
+
+.app__main * {
+  font-size: var(--font_size);
 }
 
 .app__textInput,
@@ -89,6 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .app__textInput {

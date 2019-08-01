@@ -3,7 +3,7 @@ import GridHeader from '../gridHeader'
 import './gridCell.css'
 
 
-class Grid extends React.Component {
+class GridCell extends React.Component {
   constructor(props) {
     super(props)
 
@@ -17,12 +17,14 @@ class Grid extends React.Component {
 
   render() {
     return (
-      <div className={this.props.className}>
-        <GridHeader title={this.props.title} options={this.props.options} onOptionClick={this.handleClick} />
-        {this.props.children}
+      <div className={['gridCell', this.props.className].join(' ')}>
+        <GridHeader className="gridCell__header" title={this.props.title} options={this.props.options} onOptionClick={this.handleClick} />
+        <div className="gridCell__body">
+          {this.props.children}
+        </div>
       </div>
     )
   }
 }
 
-export default Grid
+export default GridCell

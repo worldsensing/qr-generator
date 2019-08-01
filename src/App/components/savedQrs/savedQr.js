@@ -20,11 +20,11 @@ class SavedQr extends React.Component {
   }
 
   render() {
-    const { id, name, date, text, timestamp } = this.props.data
+    const { id, name, date, text, form, timestamp } = this.props.data
     return (
       <div id={id} data-timestamp={timestamp} className="savedQr">
         <div className="savedQr__qr" onClick={this.handleClick}>
-          <QR value={text} />
+          <QR value={form || text} />
         </div>
         <div className="savedQr__data" onClick={this.handleClick}>
           <div className="savedQr__name">{name}</div>

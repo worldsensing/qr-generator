@@ -5,6 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  
+  --font_size: 14px;
+  --line_height: 16px;
+
+  font-size: var(--font_size);
+  line-height: var(---line_height);
 }
 
 code {
@@ -13,10 +20,5 @@ code {
 }
 
 * {
-  --font_size: 14px;
-  --line_height: 16px;
-
-  font-size: var(--font_size);
-  line-height: var(---line_height);
   box-sizing: border-box;
 }

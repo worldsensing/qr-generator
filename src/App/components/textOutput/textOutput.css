@@ -14,6 +14,18 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: 25px;
+  padding: 12px 10px;
   background-color: transparent;
+}
+
+.react-json-view .copy-icon > svg {
+  font-size: 11px !important;
+}
+
+.react-json-view .copy-to-clipboard-container {
+  display: inline; 
+  opacity:0;
+}
+.react-json-view .variable-row:hover .copy-to-clipboard-container {
+  opacity:1;
 }

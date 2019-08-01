@@ -1,1 +1,12 @@
-.grid {}
+.gridCell {
+  display: flex; 
+  flex-direction: column;
+}
+
+.gridCell__body {
+  overflow-y: auto;
+  width: 100%;
+  padding: 2px 10px;
+  display: flex;
+  flex-grow: 1;
+}
