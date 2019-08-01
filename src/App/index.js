@@ -7,7 +7,7 @@ import SavedQrs from './components/savedQrs'
 import Header from './components/header'
 import Search from './components/search'
 import './App.css'
-import Store, { QRS } from 'App/store'
+import Store, { QRS, THEME } from 'App/store'
 import Theme from 'App/theme'
 
 
@@ -19,8 +19,7 @@ class App extends React.Component {
 
     this.state = {
       text: '',
-      qrs,
-      theme: 'dark'
+      qrs
     }
 
     this.qrs = qrs
@@ -69,13 +68,22 @@ class App extends React.Component {
   }
 
   handleColorChange = color => {
-    const lightness = color ? 'dark' : 'light',
+    const lightness = color ? 'dark' : 'light'
+
+    Store.set(THEME, lightness)
+
+    this.setTheme()
+  }
+
+  setTheme = () => {
+    const lightness = Store.get(THEME) || 'dark',
       theme = Theme[lightness]
 
     Object.entries(theme).forEach(([key, color]) => document.documentElement.style.setProperty(`--${key}`, color))
   }
 
   render() {
+    this.setTheme()
 
     return (
       <div className="app">

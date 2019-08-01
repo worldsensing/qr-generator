@@ -18,7 +18,7 @@ const Theme = {
     background_aside_color: '#fff',
     background_aside_secundary: '#fff',
     font_color_inverted: '#000',
-    font_color_general: '#fff',
+    font_color_general: '#000',
     font_color_secundary: '#000',
     selected_color: '#f00',
     font_color_success: '#7cdd5e',

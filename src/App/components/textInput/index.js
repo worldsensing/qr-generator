@@ -1,5 +1,4 @@
 import React from 'react'
-import ContentEditable from 'react-contenteditable'
 import './textInput.css'
 
 class TextInput extends React.Component {
@@ -18,16 +17,13 @@ class TextInput extends React.Component {
   }
 
   render() {
-
     return (
       <textarea
         tabIndex={0}
         className="textInput"
         onChange={this.handleChange}
-        tagName='code'
-      >
-        {this.props.value}
-      </textarea>
+        value={this.props.value}
+      />
     )
   }
 }

@@ -1,4 +1,5 @@
-export const QRS = 'QRS'
+export const QRS = 'QRS',
+  THEME = 'THEME'
 
 class Store {
   static set = (key, value) => window.localStorage.setItem(key, JSON.stringify(value))
