@@ -6,7 +6,7 @@ class QR extends React.Component {
 
   render() {
     const json = JSON.stringify(this.props.value),
-      value = json.replace(/(\s|\\n|\\)/g, "")
+      value = json.replace(/(\s|\\n|\\)/g, "").slice(1, -1)
 
     return (
       <div className="qr">
