@@ -4,8 +4,8 @@ import Header from './components/header'
 import Search from './components/search'
 import Grid from './components/grid'
 import './App.css'
-import Store, { QRS, THEME } from 'App/store'
-import Theme from 'App/theme'
+import Store, { QRS, THEME } from './store'
+import Theme from './theme'
 
 
 class App extends React.Component {

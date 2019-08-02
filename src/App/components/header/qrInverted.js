@@ -1,5 +1,5 @@
 import React from 'react'
-import Store, { THEME } from 'App/store'
+import Store, { THEME } from '../../store'
 
 class QRInverted extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import FormInput from '../formInput'
-import Store, { INPUT_OPTION, TEXT } from 'App/store'
+import Store, { INPUT_OPTION, TEXT } from '../../store'
 import GridCell from '../gridCell'
 import QR from '../qr'
 import TextInput from '../textInput'
