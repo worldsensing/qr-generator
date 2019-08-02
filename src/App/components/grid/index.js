@@ -36,20 +36,22 @@ class Grid extends React.Component {
 
     const form = this.state.form ? JSON.stringify(this.state.form) : text
 
+    this.props.onChange(true)
+
     this.setState({ text, inputOptions, form })
   }
 
   handleSubmit = name => {
     const date = new Date().toISOString(),
       timestamp = Date.parse(date),
-      { text, form } = this.state,
+      { text } = this.state,
       qr = {
         id: `${timestamp}--${name}`,
         name,
         date,
         timestamp,
         text,
-        form
+        visible: true
       }
 
     this.props.onSavedQR(qr)
@@ -91,15 +93,21 @@ class Grid extends React.Component {
     }
   }
 
-  outputValue = () => this.isInputOption('form') ? this.state.form || this.state.text : this.state.text
+  outputValue = () => this.isInputOption('form') ? this.state.form || this.state.text : this.props.text || this.state.text
+
+  shouldComponentUpdate(data) {
+    return data.text !== this.state.text
+  }
 
   render() {
+
+    const textLoaded = this.props.text || this.state.text
 
     return (
       <main className="app__main">
         <GridCell className="app__textInput" title="Input" options={this.state.inputOptions} onOptionChange={this.handleOptionChange}>
-          {this.isInputOption('text') && <TextInput value={this.state.text} onChange={this.handleText} placeholder="Write something" />}
-          {this.isInputOption('form') && <FormInput value={this.state.text} onFormChange={this.handleFormInputChange} />}
+          {this.isInputOption('text') && <TextInput value={textLoaded} onChange={this.handleText} placeholder="Write something" />}
+          {this.isInputOption('form') && <FormInput value={textLoaded} onFormChange={this.handleFormInputChange} />}
         </GridCell>
         <GridCell className="app__textOutput" title="Output" >
           <TextOutput value={this.outputValue()} placeholder="..." />

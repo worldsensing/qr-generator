@@ -23,7 +23,7 @@ class SavedQrs extends React.Component {
   }
 
   render() {
-    const sortedQrs = this.props.qrs.sort((a, b) => a.timestamp < b.timestamp ? 1 : -1)
+    const sortedQrs = this.props.qrs.sort((a, b) => a.timestamp < b.timestamp ? 1 : -1).filter(qr => qr.visible)
 
     return (
       <div className={['savedQrs', this.props.qrs.length === 1 ? 'savedQrs--oneLeft' : ''].join(' ')}>

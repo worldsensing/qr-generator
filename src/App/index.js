@@ -19,22 +19,23 @@ class App extends React.Component {
       search: ''
     }
 
-    this.qrs = qrs
-
 
     this.handleSavedQR = this.handleSavedQR.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleLoadQR = this.handleLoadQR.bind(this)
     this.handleRemoveQR = this.handleRemoveQR.bind(this)
     this.handleColorChange = this.handleColorChange.bind(this)
+    this.handleGridChange = this.handleGridChange.bind(this)
   }
 
   handleSearch = text => {
-    this.setState({ search: text, qrs: this.qrs.filter(qr => qr.name.includes(text)) })
+
+    this.setState(prevState => ({ search: text, qrs: prevState.qrs.map(qr => ({ ...qr, visible: qr.name.includes(text) })) }))
   }
 
   handleLoadQR = qr => {
     const { text } = qr
+
     this.setState({ text })
   }
 
@@ -52,6 +53,10 @@ class App extends React.Component {
     this.setTheme()
   }
 
+  handleGridChange = hasChanged => {
+    if (hasChanged) this.setState({ text: undefined })
+  }
+
   setTheme = () => {
     const lightness = Store.get(THEME) || 'dark',
       theme = Theme[lightness]
@@ -60,7 +65,14 @@ class App extends React.Component {
   }
 
   handleSavedQR = qr => {
-    this.setState(prevState => ({ qrs: [...(prevState.qrs ? prevState.qrs : ''), qr] }), Store.set(QRS, this.state.qrs))
+
+    this.setState(prevState => {
+      const qrs = [...(prevState.qrs ? prevState.qrs : ''), qr]
+
+      Store.set(QRS, qrs)
+
+      return { qrs }
+    })
   }
 
   render() {
@@ -83,7 +95,7 @@ class App extends React.Component {
               : null
             }
           </aside>
-          <Grid onSavedQR={this.handleSavedQR} />
+          <Grid onSavedQR={this.handleSavedQR} text={this.state.text} onChange={this.handleGridChange} />
         </div>
       </div>
     )
